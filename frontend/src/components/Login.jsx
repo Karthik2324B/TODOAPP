@@ -6,30 +6,26 @@ import { toast } from 'react-hot-toast'
 function Login() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-
   const navigateTo = useNavigate()
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
-      const { data } = await axios.post('https://todoapp-backend-s5h4.onrender.com/user/login', {
-        email,
-        password
-      }, {
-        withCredentials: true,
-        headers: {
-          'Content-Type': 'application/json',
+      const { data } = await axios.post(
+        'https://todoapp-backend-s5h4.onrender.com/user/login',
+        { email, password },
+        {
+          headers: { 'Content-Type': 'application/json' }
         }
-      })
+      )
 
-      
+      // Save token with consistent key
+      localStorage.setItem("token", data.token)
+
       toast.success(data.message || "Logged in successfully")
-      localStorage.setItem("jwt", data.token)
-      console.log("Token received:", data.token);
-      console.log("Navigating to home...");
-      navigateTo("/home");
-      console.log("Should have navigated now");
+      navigateTo("/home")
+
       setEmail("")
       setPassword("")
     } catch (error) {
@@ -69,7 +65,7 @@ function Login() {
               className='w-full p-2 border border-gray-300 focus:outline-none rounded'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              autocomplete="current-password"
+              autoComplete="current-password"
             />
           </div>
 
