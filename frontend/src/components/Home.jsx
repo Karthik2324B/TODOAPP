@@ -16,7 +16,7 @@ function Home() {
     const fetchTodos = async () => {
       setLoading(true)
       try {
-        const response = await axios.get('http://localhost:4001/todo/fetch',
+        const response = await axios.get('https://todoapp-backend-s5h4.onrender.com/todo/fetch',
           {
             withCredentials: true,
             headers: {
@@ -42,7 +42,7 @@ function Home() {
       return
     }
     try {
-      const response = await axios.post('http://localhost:4001/todo/create', {
+      const response = await axios.post('https://todoapp-backend-s5h4.onrender.com/todo/create', {
         title: newTodo,
         completed: false
       }, {
@@ -59,7 +59,7 @@ function Home() {
   const todoStatus = async (id) => {
     const todo = todos.find((t) => t._id === id)
     try {
-      const response = await axios.put(`http://localhost:4001/todo/update/${id}`, {
+      const response = await axios.put(`https://todoapp-backend-s5h4.onrender.com/todo/update/${id}`, {
         ...todo,
         completed: !todo.completed
 
@@ -75,7 +75,7 @@ function Home() {
 
   const todoDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:4001/todo/delete/${id}`, {
+      await axios.delete(`https://todoapp-backend-s5h4.onrender.com/todo/delete/${id}`, {
         withCredentials: true,
       })
       setTodos(todos.filter((t) => t._id !== id))
@@ -89,7 +89,7 @@ function Home() {
 
   const logout = async () => {
     try {
-      await axios.get('http://localhost:4001/user/logout', {
+      await axios.get('https://todoapp-backend-s5h4.onrender.com/user/logout', {
         withCredentials: true,
       })
       toast.success("Logged out successfully")
