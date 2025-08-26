@@ -14,7 +14,7 @@ dotenv.config()
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
-  origin: process.env.FRONTEND_URL, 
+  origin: "https://todoapp-frontend-54g4.onrender.com", 
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
