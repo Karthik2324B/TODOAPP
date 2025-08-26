@@ -6,7 +6,7 @@ export const authenticate = async (req, res, next) => {
   // Check if the request has a valid authentication token
   const token = req.cookies.jwt
     if (!token) {
-        return res.status(401).json({ message: 'Unauthorized' });
+        return res.status(401).json({ message: 'Unauthoroooooooooooooooooooooized' });
     }
 
     try {
