@@ -16,7 +16,7 @@ function Signup() {
     e.preventDefault()
   
     try {
-      const {data}= await axios.post('http://localhost:4001/user/signup', {
+      const {data}= await axios.post('https://todoapp-backend-s5h4.onrender.com/user/signup', {
         username,
         email,
         password
